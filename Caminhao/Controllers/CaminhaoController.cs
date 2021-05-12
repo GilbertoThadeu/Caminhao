@@ -6,12 +6,13 @@ using System.Linq;
 using System.Threading.Tasks;
 using Caminhao.Models;
 using Microsoft.Extensions.Logging;
+using Caminhao.Interface;
 
 namespace Caminhao.Controllers
 {
     //[ApiController]
     //[Route("Caminhao/[controller]")]
-    public class CaminhaoController : Controller
+    public class CaminhaoController : Controller, ICaminhao
     {
         protected DataContext _context;
 
@@ -19,13 +20,6 @@ namespace Caminhao.Controllers
         {
             _context = context;
         }
-
-        //private readonly ILogger<CaminhaoController> _logger;
-
-        //public CaminhaoController(ILogger<CaminhaoController> logger)
-        //{
-        //    _logger = logger;
-        //}
 
         public IActionResult Index()
         {
@@ -137,25 +131,6 @@ namespace Caminhao.Controllers
             _context.Caminhao.Remove(tB_Caminhao);
             _context.SaveChanges();
             return RedirectToAction("Index");
-        }
-
-        [HttpPost]
-        public IActionResult Save(Caminhao.Models.Caminhao caminhao)
-        {
-            if (caminhao != null)
-            {
-                _context.Add(caminhao);
-                _context.SaveChanges();
-                return Created("/Caminhao/" + caminhao.Id, caminhao);
-            }
-
-            return BadRequest();
-        }
-
-        //[EnableQuery]
-        //public IQueryable<Caminhao.Models.Caminhao> Get()
-        //{
-        //    return _context.Caminhao.AsQueryable();
-        //}
+        }        
     }
 }
