@@ -1,6 +1,7 @@
 # Caminhao
 Para testar é preciso ter o visual studio 2019 ou superior. 
 Abrir o arquivo Volvo_Teste.sln. 
+É necessario criar o banco de dados e colocar a configuração de conexão no arquivo appsetting.json, só substituir a configuração atual que está na variavel "cnstr",
 Abrir o console do gerenciador de pacotes do nuget em Ferramentas -> Gerenciador de pacotes do nuget -> Console de gerenciador de pacotes
 Digitar o comando: Add-Migration odata-v1
 Depois digitar o comando: Update-Database
